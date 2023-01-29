@@ -1,7 +1,9 @@
 name: Deploy base VPC cloudformation stack
 
 on: 
-  workflow_dispatch:
+  push:
+    branches:
+      - main
 
 permissions:
   id-token: write
