@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - name: Checkout code from main branch
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: set up python
         uses: actions/setup-python@v2
@@ -28,7 +28,7 @@ jobs:
           pip install boto3
 
       - name: Configure AWS credentials 
-        uses: aws-actions/configure-aws-credentials@v1
+        uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: us-east-2
           role-to-assume: arn:aws:iam::695327934036:role/OIDCRoleForGitHub
