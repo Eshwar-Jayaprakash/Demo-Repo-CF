@@ -2,67 +2,10 @@
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Effect": "Allow",
-      "Action": "*",
+      "Sid": "DenyBlackRock",
+      "Effect": "Deny",
+      "Action": "blackrock:*",
       "Resource": "*"
-    },
-    {
-      "Effect": "Deny",
-      "Action": [
-        "config:Delete*",
-        "config:Stop*",
-        "rolesanywhere:CreateTrustAnchor",
-        "rolesanywhere:UpdateTrustAnchor",
-        "rolesanywhere:DeleteTrustAnchor"
-      ],
-      "Resource": "*",
-      "Condition": {
-        "StringNotLike": {
-          "aws:PrincipalARN": [
-            "arn:aws:iam::*:role/AWSCloudFormationStackSetExecutionRole"
-          ]
-        }
-      }
-    },
-    {
-      "Effect": "Deny",
-      "Action": [
-        "aws-marketplace:Accept*",
-        "aws-marketplace:Cancel*",
-        "aws-marketplace:Complete*",
-        "aws-marketplace:Create*",
-        "aws-marketplace:Put*",
-        "aws-marketplace:Reject*",
-        "aws-marketplace:Start*",
-        "aws-marketplace:Subscribe",
-        "aws-marketplace:Unsubscribe",
-        "aws-marketplace:Update*"
-      ],
-      "Resource": "*",
-      "Condition": {
-        "StringNotLike": {
-          "aws:PrincipalARN": [
-            "arn:aws:iam::*:role/AWSCloudFormationStackSetExecutionRole"
-          ]
-        }
-      }
-    },
-    {
-      "Effect": "Deny",
-      "Action": "bedrock:*",
-      "Resource": "*"
-    },
-    {
-      "Effect":"Deny",
-      "Action":"backup:CopyFromBackupVault",
-      "Resource":"*",
-      "Condition":{
-        "ForAllValues:StringNotLike":{
-          "backup:CopyTargetOrgPaths":[
-            "o-bt64pxw4y8/ou-cxut-v75qjo1u/"
-          ]
-        }
-      }
-    } 
+    }
   ]
 }
