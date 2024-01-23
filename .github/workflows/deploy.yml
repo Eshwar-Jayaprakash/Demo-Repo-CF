@@ -24,10 +24,8 @@ jobs:
           role-to-assume: arn:aws:iam::695327934036:role/OIDCRoleForGitHub
           role-session-name: samplerolesession
 
-      - name: Deploy CloudFormation stack
-        uses: aws-actions/aws-cloudformation-github-deploy@v1
-        with:
-          name: my-stack
-          template: ./EshwarTestSCP.yml
+      - name: Deploy SCP
+        run: |
+          aws organizations create-policy --content file://EshwarTestSCP.json --description "My SCP" --name MySCP --type SERVICE_CONTROL_POLICY
 
   
