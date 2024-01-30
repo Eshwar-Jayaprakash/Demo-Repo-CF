@@ -21,11 +21,16 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: us-east-2
-          role-to-assume: arn:aws:iam::695327934036:role/OIDCRoleForGitHub
+          role-to-assume: arn:aws:iam::695327934036:role/eshwarGithubRole
           role-session-name: samplerolesession
 
       - name: Deploy SCP
         run: |
-          aws organizations create-policy --content file://EshwarTestSCP.json --description "My SCP" --name MySCP --type SERVICE_CONTROL_POLICY
+          # Read the configuration file
+            config=$(jq -r '.SCPs' /configuration.json)
 
+            for scp in "${config[@]}"; do
+              policy_id=$(aws organizations create-policy --content file://${scp.path} --description "My SCP" --name ${scp.name} --type SERVICE_CONTROL_POLICY --query 'Policy.PolicySummary.Id' --output text)
+              aws organizations attach-policy --policy-id ${policy_id} --target-id ${scp.targetOU}
+            done
   
