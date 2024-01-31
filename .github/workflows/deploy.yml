@@ -21,7 +21,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           aws-region: us-east-2
-          role-to-assume: arn:aws:iam::695327934036:role/eshwarGithubRole
+          role-to-assume: arn:aws:iam::695327934036:role/EshwarGithubRole
           role-session-name: samplerolesession
 
       - name: Deploy SCP
