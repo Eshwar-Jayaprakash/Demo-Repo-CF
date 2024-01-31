@@ -26,11 +26,14 @@ jobs:
 
       - name: Deploy SCP
         run: |
-    
-          config=$(jq -r '.SCPs[]' configuration.json)
+          config=$(jq -c '.SCPs[]' configuration.json)
 
-          echo "$config" | while read scp; do
-            policy_id=$(aws organizations create-policy --content file://$(echo $scp | jq -r '.path') --description "My SCP" --name $(echo $scp | jq -r '.name') --type SERVICE_CONTROL_POLICY --query 'Policy.PolicySummary.Id' --output text)
-            aws organizations attach-policy --policy-id ${policy_id} --target-id $(echo $scp | jq -r '.targetOU')
+          echo "$config" | while read -r scp; do
+            scp_path=$(echo $scp | jq -r '.path')
+            scp_name=$(echo $scp | jq -r '.name')
+            scp_targetOU=$(echo $scp | jq -r '.targetOU')
+        
+            policy_id=$(aws organizations create-policy --content file://${scp_path} --description "My SCP" --name ${scp_name} --type SERVICE_CONTROL_POLICY --query 'Policy.PolicySummary.Id' --output text)
+            aws organizations attach-policy --policy-id ${policy_id} --target-id ${scp_targetOU}
           done
   
