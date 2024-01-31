@@ -2,13 +2,13 @@
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Sid": "DenyBlackRock",
+      "Sid": "DenyBedRock",
       "Effect": "Deny",
-      "Action": "blackrock:*",
+      "Action": "bedrock:*",
       "Resource": "*",
       "Condition": {
         "StringNotEquals": {
-          "aws:PrincipalAccount": "270351833023"
+          "aws:PrincipalAccount": 270351833023
         }
       }
     }
