@@ -2,12 +2,12 @@
   "SCPs": [
     {
       "name": "Dev-igw-dx",
-      "path": "/SCP-file-structure/dev-igw-dx/ServiceDeny.json",
+      "path": "SCP-file-structure/dev-igw-dx/ServiceDenyEshwar.json",
       "targetOU": "ou-cxut-fez0az36"
     },
     {
       "name": "Dev-igw-nodx",
-      "path": "/SCP-file-structure/dev-igw-nodx/ServiceDeny.json",
+      "path": "SCP-file-structure/dev-igw-nodx/ServiceDenyEshwar.json",
       "targetOU": "ou-cxut-2gcnm084"
     }
   ]
