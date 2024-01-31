@@ -5,7 +5,12 @@
       "Sid": "DenyBlackRock",
       "Effect": "Deny",
       "Action": "blackrock:*",
-      "Resource": "*"
+      "Resource": "*",
+      "Condition": {
+        "StringNotEquals": {
+          "aws:PrincipalAccount": "270351833023"
+        }
+      }
     }
   ]
 }
