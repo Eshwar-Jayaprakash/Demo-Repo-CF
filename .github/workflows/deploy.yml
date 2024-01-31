@@ -27,7 +27,7 @@ jobs:
       - name: Deploy SCP
         run: |
           # Read the configuration file
-            config=$(jq -r '.SCPs' /configuration.json)
+            config=$(jq -r '.SCPs' configuration.json) 
 
             for scp in "${config[@]}"; do
               policy_id=$(aws organizations create-policy --content file://${scp.path} --description "My SCP" --name ${scp.name} --type SERVICE_CONTROL_POLICY --query 'Policy.PolicySummary.Id' --output text)
