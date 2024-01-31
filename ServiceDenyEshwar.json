@@ -2,13 +2,14 @@
   "Version": "2012-10-17",
   "Statement": [
     {
-      "Sid": "DenyBedRock",
       "Effect": "Deny",
       "Action": "bedrock:*",
       "Resource": "*",
       "Condition": {
         "StringNotEquals": {
-          "aws:PrincipalAccount": 270351833023
+          "aws:PrincipalAccount": [
+            "270351833023"
+          ]  
         }
       }
     }
