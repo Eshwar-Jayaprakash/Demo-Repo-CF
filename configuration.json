@@ -1,7 +1,7 @@
 {
   "SCPs": [
     {
-      "name": "Dev-igw-dx",
+      "name": "ServiceDenyEshwar-root",
       "path": "ServiceDenyEshwar.json",
       "targetOU": "r-cxut"
     }
