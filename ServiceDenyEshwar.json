@@ -4,7 +4,14 @@
     {
       "Effect": "Deny",
       "Action": "bedrock:*",
-      "Resource": "*"
+      "Resource": "*",
+    "Condition": {
+      "StringNotEquals": {
+        "aws:PrincipalAccount": [
+          "270351833023"
+        ]  
+       }
+      } 
 
     }
   ]
